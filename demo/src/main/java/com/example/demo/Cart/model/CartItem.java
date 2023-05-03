@@ -1,5 +1,7 @@
 package com.example.demo.Cart.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 @Entity
@@ -9,9 +11,12 @@ public class CartItem {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @JsonManagedReference
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "cart_id")
     private ShoppingCart cart;
+
+
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "product_id")
@@ -21,8 +26,8 @@ public class CartItem {
 
     public CartItem(Product product, ShoppingCart cart, int quantity){
         this.product = product;
-        this.quantity = quantity;
         this.cart = cart;
+        this.quantity = quantity;
     }
 
     public CartItem() {
@@ -46,3 +51,4 @@ public class CartItem {
     }
 
 }
+

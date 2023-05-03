@@ -1,5 +1,6 @@
 package com.example.demo.Cart.controller;
 
+import com.example.demo.Cart.model.Product;
 import com.example.demo.Cart.model.ShoppingCart;
 import com.example.demo.Cart.service.CartService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,8 +32,13 @@ public class CartController {
     @PostMapping
     public ResponseEntity<ShoppingCart> createCart(@RequestBody ShoppingCart cart) {
         ShoppingCart createdCart = cartService.createCart(cart);
-        return ResponseEntity.status(HttpStatus.CREATED).body(createdCart);
+        return new ResponseEntity<>(createdCart, HttpStatus.CREATED);
+
+        // Old version
+//        return ResponseEntity.status(HttpStatus.CREATED).body(createdCart);
     }
+
+
 //    @PutMapping("/{id}")
 //    public ResponseEntity<ShoppingCart> updateCart(@PathVariable Long id, @RequestBody ShoppingCart cart) {
 //        ShoppingCart updatedCart = cartService.addProductToCart(id, cart);
