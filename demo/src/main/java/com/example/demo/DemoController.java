@@ -1,5 +1,7 @@
 package com.example.demo;
 
+import com.example.demo.Cart.model.Customer;
+import com.example.demo.Cart.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
